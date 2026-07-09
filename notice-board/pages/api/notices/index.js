@@ -3,7 +3,9 @@ import { asyncHandler } from "../../../utils/asyncHandler";
 import { AppError } from "../../../utils/AppError";
 
 const getNotice = async () => {
-  return await prisma.notice.findMany();
+  return await prisma.notice.findMany({
+    orderBy: { priority: "desc" },
+  });
 };
 
 const createNotice = async (data) => {
